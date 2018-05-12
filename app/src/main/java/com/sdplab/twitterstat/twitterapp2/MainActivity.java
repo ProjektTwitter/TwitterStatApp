@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.sdplab.twitterstat.utils.Constants;
+
+import twitter4j.conf.ConfigurationBuilder;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
@@ -21,14 +25,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(v.getId()){
 
             case R.id.button1:
-                StartAddHashActivity();
+                startAddHashActivity();
                 break;
 
         }
     }
 
-    private void StartAddHashActivity(){
+    private void startAddHashActivity(){
         Intent intent = new Intent(this, AddHashActivity.class);
         startActivity(intent);
+    }
+
+    private void connectToAPI(){
+        ConfigurationBuilder cb = new ConfigurationBuilder();
+        cb.setDebugEnabled(true).setOAuthConsumerKey(Constants.consumerKey)
+                .setOAuthConsumerSecret(Constants.consumerSecret)
+                .setOAuthAccessToken(Constants.accessToken)
+                .setOAuthAccessTokenSecret(Constants.accessSecret);
     }
 }
