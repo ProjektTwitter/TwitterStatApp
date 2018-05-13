@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         Button one = findViewById(R.id.button1);
         one.setOnClickListener(this);
+        ConfigurationBuilder cb = new ConfigurationBuilder();
+        connectToAPI(cb);
     }
 
     @Override
@@ -36,8 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
     }
 
-    private void connectToAPI(){
-        ConfigurationBuilder cb = new ConfigurationBuilder();
+    private void connectToAPI(ConfigurationBuilder cb){
         cb.setDebugEnabled(true).setOAuthConsumerKey(Constants.consumerKey)
                 .setOAuthConsumerSecret(Constants.consumerSecret)
                 .setOAuthAccessToken(Constants.accessToken)
